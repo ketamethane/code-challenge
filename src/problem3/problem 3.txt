@@ -1,0 +1,15 @@
+The Props interface is defined but not used within the WalletPage component. This is unnecessary and can lead to confusion.
+
+The children variable is destructured from props but not used within the component. This is an unused variable and adds unnecessary clutter to the code.
+
+The sortedBalances array is computed using useMemo, but the sorting function is not efficient. It sorts the balances multiple times using the getPriority function, which can be optimized.
+
+The useMemo hook depends on both balances and prices, but it only lists balances as a dependency. This can lead to incorrect behavior if prices change.
+
+In the getPriority function, there is a variable balancePriority used, but it is never defined. It should be leftPriority.
+
+Inside the sortedBalances filter function, there is a check if (lhsPriority > -99) which will always be true since you are using balancePriority.
+
+The sortedBalances array is mapped to formattedBalances and then mapped again to create rows. This can be optimized to avoid unnecessary iterations.
+
+When using map to render components, it's better to use a unique identifier as the key instead of the array index. This can improve component reusability and performance.
